@@ -8,7 +8,7 @@ namespace RogueInterface.Events
     {
         IEnemySpawnEvent IEventFactory.CreateEnemySpawn()
         {
-            return new Medi
+            return new MediumEnemySpawnEvent();
         }
 
         ITrapSpawnEvent IEventFactory.CreateTrapSpawn()
