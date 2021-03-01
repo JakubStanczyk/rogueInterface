@@ -1,6 +1,7 @@
 ﻿using System;
 
-namespace RogueInterface
+namespace RogueInterface.Events
+
 {
     class EasyEnemySpawnEvent : IEnemySpawnEvent
     {
