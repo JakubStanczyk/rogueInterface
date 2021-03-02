@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RogueInterface.Events;
+using System;
+
 
 namespace RogueInterface
 {
@@ -7,8 +9,11 @@ namespace RogueInterface
         static void Main(string[] args)
         {
             MapBuilder map = new MapBuilder(0, null, 0, null);
-            
-            for(int i = 0; i < 4;){
+            IEventFactory eve = EventFactory.GetEasySpawn();
+            IEnemySpawnEvent enemySpawnEvent = eve.CreateEnemySpawn();
+            enemySpawnEvent.DoStuff();
+
+            for (int i = 0; i < 4;){
                 if(i==0){
                     Console.WriteLine("How many rooms do you want to generate between 1 to 5? for levels 1 - 10?");
                     int roomInput = Convert.ToInt32(Console.ReadLine());

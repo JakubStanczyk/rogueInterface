@@ -6,12 +6,12 @@ namespace RogueInterface.Events
 {
     class EventFactory
     {
-        static IEventFactory GetEasySpawn()
+         public static IEventFactory GetEasySpawn()
         {
             return new EasyEventFactory();
         }
 
-        static IEventFactory GetMediumSpawn()
+        public static IEventFactory GetMediumSpawn()
         {
             return new MediumEventFactory();
         }
