@@ -13,6 +13,7 @@ namespace RogueInterface
             IEnemySpawnEvent enemySpawnEvent = eve.CreateEnemySpawn();
             enemySpawnEvent.DoStuff();
 
+
             for (int i = 0; i < 4;){
                 if(i==0){
                     Console.WriteLine("How many rooms do you want to generate between 1 to 5? for levels 1 - 10?");
