@@ -1,13 +1,62 @@
-﻿using RogueInterface.Events;
+﻿using RogueInterface.Command;
+using RogueInterface.Events;
+
 using System;
+
+using SDL2;
 
 
 namespace RogueInterface
 {
+    class ExampleCommand : IKeyboardCommand
+    {
+        public void OnKey(KeyboardEventType type, SDL.SDL_Keycode keycode)
+        {
+            switch (type)
+            {
+                case KeyboardEventType.UP:
+                    Console.WriteLine("Key up: " + keycode.ToString());
+                    break;
+                case KeyboardEventType.DOWN:
+                    Console.WriteLine("Key down: " + keycode.ToString());
+                    break;
+            }
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
         {
+            if (SDL.SDL_Init(SDL.SDL_INIT_EVERYTHING) != 0)
+            {
+                Console.WriteLine("Failed to start SDL");
+                return;
+            }
+
+            IntPtr window = SDL.SDL_CreateWindow("Rogue Interface", 100, 100, 800, 600, SDL.SDL_WindowFlags.SDL_WINDOW_SHOWN);
+            if (window == null)
+            {
+                Console.WriteLine("Failed to create window");
+                return;
+            }
+
+            bool quit = false;
+
+            ExampleCommand command = new ExampleCommand();
+
+            KeyboardController.Init();
+            KeyboardController.AddCommand(command);
+
+            while (!KeyboardController.ShouldQuit)
+            {
+                KeyboardController.PollKeyboardEvents();
+            }
+
+            SDL.SDL_DestroyWindow(window);
+            SDL.SDL_Quit();
+
+            /*
             MapBuilder map = new MapBuilder(0, null, 0, null);
             IEventFactory eve = EventFactory.GetEasySpawn();
             IEnemySpawnEvent enemySpawnEvent = eve.CreateEnemySpawn();
@@ -107,6 +156,7 @@ namespace RogueInterface
                     i++;
                 }
             }
+            */
         }
     }
 }
