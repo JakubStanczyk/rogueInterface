@@ -3,32 +3,26 @@ class MapBuilder
 {
     // Initiallize parameters for the object that will generate the maps
     int numberOfRooms;
-    string sizeOfRooms;
     int doorAttachedToRooms ;
     int gameLevel;
     int heightOfRoom;
     int widthOfRoom;
-    int sizeOfMap;
+    //int sizeOfMap;
 
     // Constructor that creates a object for the generate of the map
-    public MapBuilder(int numberOfRooms, string sizeOfRooms, int doorAttachedToRooms, int gameLevel, int heightOfRoom, int widthOfRoom, int sizeOfMap)
+    public MapBuilder(int numberOfRooms,int doorAttachedToRooms, int gameLevel, int heightOfRoom, int widthOfRoom) //int sizeOfMap)
     {
         this.numberOfRooms = numberOfRooms;
-        this.sizeOfRooms = sizeOfRooms;
         this.doorAttachedToRooms = doorAttachedToRooms;
         this.gameLevel = gameLevel;
         this.heightOfRoom = heightOfRoom;
         this.widthOfRoom = widthOfRoom;
-        this.sizeOfMap = sizeOfMap;
+        //this.sizeOfMap = sizeOfMap;
+        //Console.WriteLine("Level 1 will have " + numberOfRooms + " rooms, with " + doorAttachedToRooms + "doors attached to them. The rooms dimenstions are " + heightOfRoom + "units in height and " + widthOfRoom + "units in width");
     }
 
     public MapBuilder NumberOfRooms(int numberOfRooms){
         this.numberOfRooms = numberOfRooms;
-        return this;
-    }
-
-    public MapBuilder SizeOfRooms(string sizeOfRooms){
-        this.sizeOfRooms = sizeOfRooms;
         return this;
     }
 
@@ -54,28 +48,25 @@ class MapBuilder
         return this;
     }
 
-    public MapBuilder SizeOfMap(int sizeOfMap)
+    /*public MapBuilder SizeOfMap(int sizeOfMap)
     {
         this.sizeOfMap = sizeOfMap;
         return this;
-    }
+    }*/
 
     public MapBuilder buildRooms(){
-        return new MapBuilder(numberOfRooms, sizeOfRooms, doorAttachedToRooms, gameLevel, heightOfRoom, widthOfRoom, sizeOfMap);
+        return new MapBuilder(numberOfRooms,doorAttachedToRooms, gameLevel, heightOfRoom, widthOfRoom);
     }
 
-    public int getRoomNumber(){
+    public int getNumberOfRooms(){
         return numberOfRooms;
     }
-    public String getRoomSize(){
-        return sizeOfRooms;
-    }
 
-    public int getDoorNumber(){
+    public int getDoorsAttachedToRooms(){
         return doorAttachedToRooms;
     }
 
-    public int getLevelRange(){
+    public int getGameLevel(){
         return gameLevel;
     }
 
@@ -89,8 +80,8 @@ class MapBuilder
         return widthOfRoom;
     }
 
-    public int getSizeOfMap()
+    /*public int getSizeOfMap()
     {
         return sizeOfMap;
-    }
+    }*/
 }
