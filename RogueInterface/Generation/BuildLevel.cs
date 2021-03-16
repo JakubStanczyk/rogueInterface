@@ -11,21 +11,42 @@ namespace RogueInterface.Generation
 
         public void drawRoom(int heightOfRoom, int widthOfRoom)
         {
-            string printWidth = "|";
+            string printWidth = "";
             string printHeight = "";
             int height = heightOfRoom;
             int width = widthOfRoom;
 
-            for(int i = 0; i < width; i++)
+            for(int i = 0; i <= width + 1; i++)
             {
-                printWidth = printWidth + "-";
+                printWidth += "*";
             }
             Console.WriteLine(printWidth);
 
-            printHeight = printHeight + "{0, width-1}" + "|";
-            for (int i = 0; i < height; i++)
+            if (height == 7)
             {
-                Console.WriteLine();
+                printHeight = "*       *";
+                for (int i = 0; i <= height; i++)
+                { 
+                    Console.WriteLine(printHeight);
+                }
+            }
+
+            else if(height == 12)
+            {
+                printHeight = "*            *";
+                for (int i = 0; i <= height; i++)
+                {
+                    Console.WriteLine(printHeight);
+                }
+            }
+
+            else if(height == 17)
+            {
+                printHeight = "*                 *";
+                for (int i = 0; i <= height; i++)
+                {
+                    Console.WriteLine(printHeight);
+                }
             }
             Console.WriteLine(printWidth);
         }

@@ -1,5 +1,6 @@
 ﻿using RogueInterface.Command;
 using RogueInterface.Events;
+using RogueInterface.Generation;
 
 using System;
 
@@ -28,36 +29,39 @@ namespace RogueInterface
     {
         static void Main(string[] args)
         {
-            MapBuilder map = new MapBuilder(0, 0, 0, 0, 0);
+            MapBuilder mapInformation = new MapBuilder(0, 0, 0, 0, 0);
+            BuildLevel buildItem = new BuildLevel();
 
             Console.WriteLine("How many rooms do you want to generate between 1 to 4 for level 1?");
             int roomInput = Convert.ToInt32(Console.ReadLine());
-            map.NumberOfRooms(roomInput);
+            mapInformation.NumberOfRooms(roomInput);
 
             Console.WriteLine("What size of rooms do you want to be generated for level 1? (small, medium, large)");
             string sizeOfRooms = Console.ReadLine();
             if (sizeOfRooms == "small")
             {
-                map.DoorAttachedToRooms(2);
-                map.HeightOfRoom(7);
-                map.WidthOfRoom(7);
+                mapInformation.DoorAttachedToRooms(2);
+                mapInformation.HeightOfRoom(7);
+                mapInformation.WidthOfRoom(7);
 
             }
             else if (sizeOfRooms == "medium")
             {
-                map.DoorAttachedToRooms(3);
-                map.HeightOfRoom(12);
-                map.WidthOfRoom(12);
+                mapInformation.DoorAttachedToRooms(3);
+                mapInformation.HeightOfRoom(12);
+                mapInformation.WidthOfRoom(12);
             }
             else
             {
-                map.DoorAttachedToRooms(4);
-                map.HeightOfRoom(17);
-                map.WidthOfRoom(17);
+                mapInformation.DoorAttachedToRooms(4);
+                mapInformation.HeightOfRoom(17);
+                mapInformation.WidthOfRoom(17);
             }
-            map.GameLevel(1);
-            map.buildRooms();
-            Console.WriteLine("Level 1 will have " + map.getNumberOfRooms() + " rooms, with " + map.getDoorsAttachedToRooms() + "doors attached to them. The rooms dimenstions are " + map.getHeightOfRoom() + "units in height and " + map.getWidthOfRoom() + "units in width");
+            mapInformation.GameLevel(1);
+            mapInformation.buildRooms();
+            Console.WriteLine("Level 1 will have " + mapInformation.getNumberOfRooms() + " rooms, with " + mapInformation.getDoorsAttachedToRooms() + "doors attached to them. The rooms dimenstions are " + mapInformation.getHeightOfRoom() + "units in height and " + mapInformation.getWidthOfRoom() + "units in width");
+            
+            buildItem.drawRoom(mapInformation.getHeightOfRoom(), mapInformation.getWidthOfRoom());
 
 
             if (SDL.SDL_Init(SDL.SDL_INIT_EVERYTHING) != 0)
