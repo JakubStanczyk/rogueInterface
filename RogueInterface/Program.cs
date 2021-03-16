@@ -1,48 +1,69 @@
-﻿using System;
+﻿using RogueInterface.Command;
+using RogueInterface.Events;
+
+using System;
+
+using SDL2;
+
 
 namespace RogueInterface
 {
+    class ExampleCommand : IKeyboardCommand
+    {
+        public void OnKey(KeyboardEventType type, SDL.SDL_Keycode keycode)
+        {
+            switch (type)
+            {
+                case KeyboardEventType.UP:
+                    Console.WriteLine("Key up: " + keycode.ToString());
+                    break;
+                case KeyboardEventType.DOWN:
+                    Console.WriteLine("Key down: " + keycode.ToString());
+                    break;
+            }
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
         {
-            MapBuilder map = new MapBuilder(0, null, 0, 0, 0, 0, 0);
-
-            Console.WriteLine("How many rooms do you want to generate between 1 to 4 in level 1");
-            int roomInput = Convert.ToInt32(Console.ReadLine());
-            map.NumberOfRooms(roomInput);
-
-            Console.WriteLine("What size of rooms do you want to be generated for levels 1 (small, medium, large)");
-            string sizeOfRooms = Console.ReadLine();
-            map.SizeOfRooms(sizeOfRooms);
-            if (sizeOfRooms == "small")
+            if (SDL.SDL_Init(SDL.SDL_INIT_EVERYTHING) != 0)
             {
-                map.DoorAttachedToRooms(2);
-                map.HeightOfRoom(7);
-                map.WidthOfRoom(7);
+                Console.WriteLine("Failed to start SDL");
+                return;
             }
-            else if (sizeOfRooms == "medium")
+
+            IntPtr window = SDL.SDL_CreateWindow("Rogue Interface", 100, 100, 800, 600, SDL.SDL_WindowFlags.SDL_WINDOW_SHOWN);
+            if (window == null)
             {
-                map.DoorAttachedToRooms(3);
-                map.HeightOfRoom(12);
-                map.WidthOfRoom(12);
+                Console.WriteLine("Failed to create window");
+                return;
             }
-            else
+
+            bool quit = false;
+
+            ExampleCommand command = new ExampleCommand();
+
+            KeyboardController.Init();
+            KeyboardController.AddCommand(command);
+
+            while (!KeyboardController.ShouldQuit)
             {
-                map.DoorAttachedToRooms(4);
-                map.HeightOfRoom(17);
-                map.WidthOfRoom(17);
+                KeyboardController.PollKeyboardEvents();
             }
-            map.GameLevel(1);
-            map.buildRooms();
 
-            int heightOfRoom = map.getHeightOfRoom();
-            int widthOfRoom = map.getWidthOfRoom();
+            SDL.SDL_DestroyWindow(window);
+            SDL.SDL_Quit();
 
-           // drawRoom(heightOfRoom, widthOfRoom);
+            /*
+            MapBuilder map = new MapBuilder(0, null, 0, null);
+            IEventFactory eve = EventFactory.GetEasySpawn();
+            IEnemySpawnEvent enemySpawnEvent = eve.CreateEnemySpawn();
+            enemySpawnEvent.DoStuff();
 
-            //commenting out for now the old implementation of main method, will be removed later
-            /*for(int i = 0; i < 4;){
+
+            for (int i = 0; i < 4;){
                 if(i==0){
                     Console.WriteLine("How many rooms do you want to generate between 1 to 5? for levels 1 - 10?");
                     int roomInput = Convert.ToInt32(Console.ReadLine());
@@ -134,7 +155,8 @@ namespace RogueInterface
                     map.buildRooms();
                     i++;
                 }
-            }*/
+            }
+            */
         }
     }
 }

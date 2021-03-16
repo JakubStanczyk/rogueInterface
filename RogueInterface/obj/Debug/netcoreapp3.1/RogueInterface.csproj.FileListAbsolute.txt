@@ -1,0 +1,15 @@
+C:\Users\Robert O'Shea\rogueInterface\RogueInterface\bin\Debug\netcoreapp3.1\RogueInterface.exe
+C:\Users\Robert O'Shea\rogueInterface\RogueInterface\bin\Debug\netcoreapp3.1\RogueInterface.deps.json
+C:\Users\Robert O'Shea\rogueInterface\RogueInterface\bin\Debug\netcoreapp3.1\RogueInterface.runtimeconfig.json
+C:\Users\Robert O'Shea\rogueInterface\RogueInterface\bin\Debug\netcoreapp3.1\RogueInterface.runtimeconfig.dev.json
+C:\Users\Robert O'Shea\rogueInterface\RogueInterface\bin\Debug\netcoreapp3.1\RogueInterface.dll
+C:\Users\Robert O'Shea\rogueInterface\RogueInterface\bin\Debug\netcoreapp3.1\RogueInterface.pdb
+C:\Users\Robert O'Shea\rogueInterface\RogueInterface\bin\Debug\netcoreapp3.1\SDL2-CS.dll
+C:\Users\Robert O'Shea\rogueInterface\RogueInterface\obj\Debug\netcoreapp3.1\RogueInterface.csprojAssemblyReference.cache
+C:\Users\Robert O'Shea\rogueInterface\RogueInterface\obj\Debug\netcoreapp3.1\RogueInterface.AssemblyInfoInputs.cache
+C:\Users\Robert O'Shea\rogueInterface\RogueInterface\obj\Debug\netcoreapp3.1\RogueInterface.AssemblyInfo.cs
+C:\Users\Robert O'Shea\rogueInterface\RogueInterface\obj\Debug\netcoreapp3.1\RogueInterface.csproj.CoreCompileInputs.cache
+C:\Users\Robert O'Shea\rogueInterface\RogueInterface\obj\Debug\netcoreapp3.1\RogueInterface.csproj.CopyComplete
+C:\Users\Robert O'Shea\rogueInterface\RogueInterface\obj\Debug\netcoreapp3.1\RogueInterface.dll
+C:\Users\Robert O'Shea\rogueInterface\RogueInterface\obj\Debug\netcoreapp3.1\RogueInterface.pdb
+C:\Users\Robert O'Shea\rogueInterface\RogueInterface\obj\Debug\netcoreapp3.1\RogueInterface.genruntimeconfig.cache
