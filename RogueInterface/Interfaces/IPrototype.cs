@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace RogueInterface.Prototype
+
 {
-    class Prototype : IProtoype
+     public interface IPrototype<T>
     {
-        public void createClone()
-        { }
+        T createCopy();
+        
     }
 }
