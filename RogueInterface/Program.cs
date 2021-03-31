@@ -28,6 +28,7 @@ namespace RogueInterface
     class Program
     {
         static void Main(string[] args)
+
         {
             MapBuilder mapInformation = new MapBuilder(0, 0, 0, 0, 0);
             BuildLevel buildItem = new BuildLevel();

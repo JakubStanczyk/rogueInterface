@@ -1,12 +1,7 @@
 {
   "ExpandedNodes": [
-    "\\RogueInterface",
-    "\\RogueInterface\\bin",
-    "\\RogueInterface\\bin\\Debug",
-    "\\RogueInterface\\bin\\Debug\\netcoreapp3.1",
-    "\\RogueInterface\\Command",
-    "\\RogueInterface\\Factories",
-    "\\RogueInterface\\Interfaces"
+    ""
   ],
+  "SelectedNode": "\\RogueInterface.sln",
   "PreviewInSolutionExplorer": false
 }
