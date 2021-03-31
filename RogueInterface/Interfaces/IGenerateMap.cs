@@ -1,6 +1,9 @@
-﻿namespace RogueInterface.Generation
+﻿
+
+namespace RogueInterface.Generation
+
 {
-    interface IGenerateMap
+    interface IGenerateMap 
     {
         public void drawRoom(int heightOfRoom, int widthOfRoom);
 

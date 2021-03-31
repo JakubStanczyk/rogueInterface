@@ -1,5 +1,6 @@
 using System;
-class MapBuilder
+using RogueInterface.Prototype;
+class MapBuilder : IPrototype<MapBuilder>
 {
     // Initiallize parameters for the object that will generate the maps
     int numberOfRooms;
@@ -78,6 +79,11 @@ class MapBuilder
     public int getWidthOfRoom()
     {
         return widthOfRoom;
+    }
+    public MapBuilder createCopy()
+    {
+        var mapBuilder = (MapBuilder)MemberwiseClone();
+        return mapBuilder;
     }
 
     /*public int getSizeOfMap()

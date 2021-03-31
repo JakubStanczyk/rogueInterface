@@ -31,7 +31,15 @@ namespace RogueInterface
 
         {
             MapBuilder mapInformation = new MapBuilder(0, 0, 0, 0, 0);
+            MapBuilder prototypeTest = new MapBuilder(1, 2, 3, 4, 5);
+            MapBuilder prototypeTestClone = prototypeTest.createCopy();
+            
+
+            Console.WriteLine(prototypeTestClone.getNumberOfRooms());
             BuildLevel buildItem = new BuildLevel();
+            BuildLevel buildItemTwo = buildItem.createCopy();
+
+            
 
             Console.WriteLine("How many rooms do you want to generate between 1 to 4 for level 1?");
             int roomInput = Convert.ToInt32(Console.ReadLine());
@@ -63,7 +71,7 @@ namespace RogueInterface
             Console.WriteLine("Level 1 will have " + mapInformation.getNumberOfRooms() + " rooms, with " + mapInformation.getDoorsAttachedToRooms() + "doors attached to them. The rooms dimenstions are " + mapInformation.getHeightOfRoom() + "units in height and " + mapInformation.getWidthOfRoom() + "units in width");
             
             buildItem.drawRoom(mapInformation.getHeightOfRoom(), mapInformation.getWidthOfRoom());
-
+        
 
             if (SDL.SDL_Init(SDL.SDL_INIT_EVERYTHING) != 0)
             {

@@ -1,13 +1,14 @@
 ﻿using System;
+using RogueInterface.Prototype;
 
 namespace RogueInterface.Generation
 {
-    public class BuildLevel : IGenerateMap
+    public class BuildLevel : IGenerateMap, IPrototype<BuildLevel>
     {
-       /* public void connectRoomWithCorridor()
-        {
-            throw new NotImplementedException();
-        } */
+        /* public void connectRoomWithCorridor()
+         {
+             throw new NotImplementedException();
+         } */
 
         public void drawRoom(int heightOfRoom, int widthOfRoom)
         {
@@ -16,7 +17,7 @@ namespace RogueInterface.Generation
             int height = heightOfRoom;
             int width = widthOfRoom;
 
-            for(int i = 0; i <= width + 1; i++)
+            for (int i = 0; i <= width + 1; i++)
             {
                 printWidth += "*";
             }
@@ -26,12 +27,12 @@ namespace RogueInterface.Generation
             {
                 printHeight = "*       *";
                 for (int i = 0; i <= height; i++)
-                { 
+                {
                     Console.WriteLine(printHeight);
                 }
             }
 
-            else if(height == 12)
+            else if (height == 12)
             {
                 printHeight = "*            *";
                 for (int i = 0; i <= height; i++)
@@ -40,7 +41,7 @@ namespace RogueInterface.Generation
                 }
             }
 
-            else if(height == 17)
+            else if (height == 17)
             {
                 printHeight = "*                 *";
                 for (int i = 0; i <= height; i++)
@@ -50,10 +51,22 @@ namespace RogueInterface.Generation
             }
             Console.WriteLine(printWidth);
         }
+        public BuildLevel createClone() {
+
+            return null;
+        }
+        
+        public BuildLevel createCopy() 
+        {
+
+            return null;
+        
+        }
+
+    }
 
       /*  public void selectRoom(string roomSize)
         {
             throw new NotImplementedException();
         }*/
     }
-}
