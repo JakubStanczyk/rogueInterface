@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\OfficePC\\source\\repos\\JakubStanczyk\\rogueInterface\\RogueInterface\\RogueInterface.csproj": {}
+    "C:\\Users\\krish\\source\\Repos\\JakubStanczyk\\rogueInterface\\RogueInterface\\RogueInterface.csproj": {}
   },
   "projects": {
-    "C:\\Users\\OfficePC\\source\\repos\\JakubStanczyk\\rogueInterface\\RogueInterface\\RogueInterface.csproj": {
+    "C:\\Users\\krish\\source\\Repos\\JakubStanczyk\\rogueInterface\\RogueInterface\\RogueInterface.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\OfficePC\\source\\repos\\JakubStanczyk\\rogueInterface\\RogueInterface\\RogueInterface.csproj",
+        "projectUniqueName": "C:\\Users\\krish\\source\\Repos\\JakubStanczyk\\rogueInterface\\RogueInterface\\RogueInterface.csproj",
         "projectName": "RogueInterface",
-        "projectPath": "C:\\Users\\OfficePC\\source\\repos\\JakubStanczyk\\rogueInterface\\RogueInterface\\RogueInterface.csproj",
-        "packagesPath": "C:\\Users\\OfficePC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\OfficePC\\source\\repos\\JakubStanczyk\\rogueInterface\\RogueInterface\\obj\\",
+        "projectPath": "C:\\Users\\krish\\source\\Repos\\JakubStanczyk\\rogueInterface\\RogueInterface\\RogueInterface.csproj",
+        "packagesPath": "C:\\Users\\krish\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\krish\\source\\Repos\\JakubStanczyk\\rogueInterface\\RogueInterface\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\OfficePC\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\krish\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -58,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }
