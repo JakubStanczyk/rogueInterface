@@ -85,9 +85,4 @@ class MapBuilder : IPrototype<MapBuilder>
         var mapBuilder = (MapBuilder)MemberwiseClone();
         return mapBuilder;
     }
-
-    /*public int getSizeOfMap()
-    {
-        return sizeOfMap;
-    }*/
 }
