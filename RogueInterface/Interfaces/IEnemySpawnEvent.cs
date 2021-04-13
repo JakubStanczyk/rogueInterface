@@ -1,7 +1,7 @@
 ﻿namespace RogueInterface.Events
 {
-    interface IEnemySpawnEvent
+    public interface IEnemySpawnEvent
     {
-        public void DoStuff();
+        public void CreateEnemy();
     }
 }

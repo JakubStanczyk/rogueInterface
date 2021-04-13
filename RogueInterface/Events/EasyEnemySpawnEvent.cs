@@ -5,9 +5,9 @@ namespace RogueInterface.Events
 {
     class EasyEnemySpawnEvent : IEnemySpawnEvent
     {
-        void IEnemySpawnEvent.DoStuff()
+        void IEnemySpawnEvent.CreateEnemy()
         {
-            Console.WriteLine("Easy Enemy Spawn");
+            Console.WriteLine("a easy enemy has been generated");
         }
     }
 }

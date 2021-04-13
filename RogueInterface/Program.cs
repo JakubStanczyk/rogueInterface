@@ -33,13 +33,28 @@ namespace RogueInterface
             MapBuilder mapInformation = new MapBuilder(0, 0, 0, 0, 0);
             MapBuilder prototypeTest = new MapBuilder(1, 2, 3, 4, 5);
             MapBuilder prototypeTestClone = prototypeTest.createCopy();
-            
+
+            IEventFactory easyEvent1 = EventFactory.GetEasySpawn();
+            IEventFactory easyEvent2 = EventFactory.GetEasySpawn();
+            IEventFactory mediumEvent1 = EventFactory.GetMediumSpawn();
+            IEventFactory mediumEvent2 = EventFactory.GetMediumSpawn();
+            IEnemySpawnEvent enemySpawnEvent1 = easyEvent1.CreateEnemySpawn();
+            IEnemySpawnEvent enemySpawnEvent2 = mediumEvent1.CreateEnemySpawn();
+            ITrapSpawnEvent enemyTrapEvent1 = easyEvent2.CreateTrapSpawn();
+            ITrapSpawnEvent enemyTrapEvent2 = mediumEvent2.CreateTrapSpawn();
+            ModifyEnemyEvent orcEnemy = new ImplementModifyEnemyEvents(new RenameMonster());
+            ModifyEnemyEvent goblinEnemy = new ImplementModifyEnemyEvents(new RenameMonster());
+            ModifyTrapEvent pitfallTrap = new ImplementModifyTrapEvent(new RenameTraps());
+            ModifyTrapEvent tripwireTrap = new ImplementModifyTrapEvent(new RenameTraps());
+            enemySpawnEvent1.CreateEnemy();
+            enemySpawnEvent2.CreateEnemy();
+            enemyTrapEvent1.CreateTrap();
+            enemyTrapEvent2.CreateTrap();
+
 
             Console.WriteLine(prototypeTestClone.getNumberOfRooms());
             BuildLevel buildItem = new BuildLevel();
             BuildLevel buildItemTwo = buildItem.createCopy();
-
-            
 
             Console.WriteLine("How many rooms do you want to generate between 1 to 4 for level 1?");
             int roomInput = Convert.ToInt32(Console.ReadLine());
@@ -71,6 +86,35 @@ namespace RogueInterface
             Console.WriteLine("Level 1 will have " + mapInformation.getNumberOfRooms() + " rooms, with " + mapInformation.getDoorsAttachedToRooms() + "doors attached to them. The rooms dimenstions are " + mapInformation.getHeightOfRoom() + "units in height and " + mapInformation.getWidthOfRoom() + "units in width");
             
             buildItem.drawRoom(mapInformation.getHeightOfRoom(), mapInformation.getWidthOfRoom());
+
+            Console.WriteLine("Should a easy enemy be a goblin?");
+            string specifiedEnemyEvent1 = Console.ReadLine();
+            if(specifiedEnemyEvent1 == "goblin")
+            {
+                goblinEnemy.renameToGoblin();
+            }
+            
+
+            Console.WriteLine("Should a medium enemy be a orc?");
+            string specifiedEnemy2 = Console.ReadLine();
+            if(specifiedEnemy2 == "orc")
+            {
+                orcEnemy.renameToOrc();
+            }
+
+            Console.WriteLine("Shoul a easy trap be a trip wire");
+            string specifiedTrap1 = Console.ReadLine();
+            if(specifiedTrap1 == "trip wire")
+            {
+                tripwireTrap.renameToTripwire();
+            }
+
+            Console.WriteLine("Should a medium trap be a pit fall?");
+            string specifiedTrap2 = Console.ReadLine();
+            if (specifiedTrap2 == "pit fall")
+            {
+                pitfallTrap.renameToPitfall();
+            }
         
 
             if (SDL.SDL_Init(SDL.SDL_INIT_EVERYTHING) != 0)
@@ -101,12 +145,8 @@ namespace RogueInterface
             SDL.SDL_DestroyWindow(window);
             SDL.SDL_Quit();
 
-            /*IEventFactory eve = EventFactory.GetEasySpawn();
-            IEnemySpawnEvent enemySpawnEvent = eve.CreateEnemySpawn();
-            enemySpawnEvent.DoStuff();
 
-
-            for (int i = 0; i < 4;){
+            /*for (int i = 0; i < 4;){
                 if(i==0){
                     Console.WriteLine("How many rooms do you want to generate between 1 to 5? for levels 1 - 10?");
                     int roomInput = Convert.ToInt32(Console.ReadLine());

@@ -4,9 +4,9 @@ namespace RogueInterface.Events
 {
     class EasyTrapSpawnEvent : ITrapSpawnEvent
     {
-        void ITrapSpawnEvent.DoStuff()
+        void ITrapSpawnEvent.CreateTrap()
         {
-            Console.WriteLine("Easy Trap Spawn");
+            Console.WriteLine("a easy trap has been generated");
         }
     }
 }

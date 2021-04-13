@@ -1,7 +1,7 @@
 ﻿namespace RogueInterface.Events
 {
-    interface ITrapSpawnEvent
+    public interface ITrapSpawnEvent
     {
-        void DoStuff();
+        public void CreateTrap();
     }
 }
