@@ -1,6 +1,7 @@
 using System;
+using RogueInterface.Generation;
 using RogueInterface.Prototype;
-class MapBuilder : IPrototype<MapBuilder>
+class MapBuilder : BuildRequestDispatcher, IPrototype<MapBuilder>, IBuildRequest
 {
     // Initiallize parameters for the object that will generate the maps
     int numberOfRooms;
@@ -12,6 +13,7 @@ class MapBuilder : IPrototype<MapBuilder>
 
     // Constructor that creates a object for the generate of the map
     public MapBuilder(int numberOfRooms,int doorAttachedToRooms, int gameLevel, int heightOfRoom, int widthOfRoom) //int sizeOfMap)
+        : base()
     {
         this.numberOfRooms = numberOfRooms;
         this.doorAttachedToRooms = doorAttachedToRooms;
@@ -56,7 +58,10 @@ class MapBuilder : IPrototype<MapBuilder>
     }*/
 
     public MapBuilder buildRooms(){
-        return new MapBuilder(numberOfRooms,doorAttachedToRooms, gameLevel, heightOfRoom, widthOfRoom);
+        dispatchPreBuilldRequest(this);
+        MapBuilder o = new MapBuilder(numberOfRooms, doorAttachedToRooms, gameLevel, heightOfRoom, widthOfRoom);
+        dispatchPostBuildRequest(this);
+        return o;
     }
 
     public int getNumberOfRooms(){
@@ -84,5 +89,46 @@ class MapBuilder : IPrototype<MapBuilder>
     {
         var mapBuilder = (MapBuilder)MemberwiseClone();
         return mapBuilder;
+    }
+
+    public void setNumberOfRooms(int val)
+    {
+        numberOfRooms = val;
+    }
+
+    public void setDoorsAttachedToRooms(int val)
+    {
+        doorAttachedToRooms = val;
+    }
+
+    public void setHeightOfRoom(int val)
+    {
+        heightOfRoom = val;
+    }
+
+    public void setGameLevel(int val)
+    {
+        gameLevel = val;
+    }
+
+    public void setWidthOfRoom(int val)
+    {
+        widthOfRoom = val;
+    }
+
+    protected override void dispatchPostBuildRequest(IBuildRequest context)
+    {
+        foreach (var inter in interceptors)
+        {
+            inter.onPostBuildRequest(this);
+        }
+    }
+
+    protected override void dispatchPreBuilldRequest(IBuildRequest context)
+    {
+        foreach (var inter in interceptors)
+        {
+            inter.onPreBuildRequest(this);
+        }
     }
 }

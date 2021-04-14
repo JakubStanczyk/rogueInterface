@@ -12,11 +12,10 @@ namespace RogueInterface.Generation
         public int getHeightOfRoom();
         public int getGameLevel();
         public int getWidthOfRoom();
-        public void setNumberOfRooms();
-        public void setDoorsAttachedToRooms();
-        public void setHeightOfRoom();
-        public void setGameLevel();
-        public void setWidthOfRoom();
-
+        public void setNumberOfRooms(int val);
+        public void setDoorsAttachedToRooms(int val);
+        public void setHeightOfRoom(int val);
+        public void setGameLevel(int val);
+        public void setWidthOfRoom(int val);
     }
 }

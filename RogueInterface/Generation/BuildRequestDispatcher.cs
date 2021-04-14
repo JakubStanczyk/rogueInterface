@@ -5,17 +5,21 @@ using System.Text;
 //not excactlty sure on setting up the dispatcher from the examples. 
 namespace RogueInterface.Generation
 {
-    public class BuildRequestDispatcher
+    public abstract class BuildRequestDispatcher
     {
-        List<IBuildRequestInterceptor> interceptors;
+        protected List<IBuildRequestInterceptor> interceptors;
+
+        public BuildRequestDispatcher()
+        {
+            interceptors = new List<IBuildRequestInterceptor>(5);
+        }
 
         public void registerBuildRequestInterceptor(IBuildRequestInterceptor interceptor)
         {
             interceptors.Add(interceptor);
         }
 
-        public void dispatchBuildRequestPre(IBuildRequest context)
-        {
-        }
+        abstract protected void dispatchPostBuildRequest(IBuildRequest context);
+        abstract protected void dispatchPreBuilldRequest(IBuildRequest context);
     }
 }

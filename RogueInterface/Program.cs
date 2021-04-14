@@ -25,11 +25,36 @@ namespace RogueInterface
         }
     }
 
+    class ClientInterceptor : IBuildRequestInterceptor
+    {
+        public void onPostBuildRequest(IBuildRequest context)
+        {
+            Console.WriteLine(context.getNumberOfRooms() + " rooms created");
+            Console.WriteLine(context.getDoorsAttachedToRooms() + " doors per room");
+            Console.WriteLine("area = " + context.getWidthOfRoom() + " x " + context.getHeightOfRoom());
+            Console.WriteLine("level = " + context.getGameLevel());
+        }
+
+        public void onPreBuildRequest(IBuildRequest context)
+        {
+            context.setNumberOfRooms(2);
+            context.setDoorsAttachedToRooms(2);
+            context.setWidthOfRoom(5);
+            context.setHeightOfRoom(5);
+            context.setGameLevel(1);
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
-
         {
+            ClientInterceptor ci = new ClientInterceptor();
+            MapBuilder mapB = new MapBuilder(0, 0, 0, 0, 0);
+            mapB.registerBuildRequestInterceptor(ci);
+            mapB.buildRooms();
+
+
             MapBuilder mapInformation = new MapBuilder(0, 0, 0, 0, 0);
             MapBuilder prototypeTest = new MapBuilder(1, 2, 3, 4, 5);
             MapBuilder prototypeTestClone = prototypeTest.createCopy();
