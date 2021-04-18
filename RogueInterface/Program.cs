@@ -237,6 +237,12 @@ namespace RogueInterface
             renderQuad.w = width;
             renderQuad.h = height;
 
+            ClientInterceptor ci = new ClientInterceptor();
+            MapBuilder mapB = new MapBuilder(0, 0, 0, 0, 0);
+            mapB.registerBuildRequestInterceptor(ci);
+            mapB = mapB.buildRooms();
+            BuildLevel bl = new BuildLevel();
+
             List<Tile> tiles = new List<Tile>();
 
             foreach (var s in tileChars)
@@ -244,14 +250,9 @@ namespace RogueInterface
                 tiles.Add(Tile.createTile(s, renderer, font, textColour, 20));
             }
 
-            int[,] map =
-            {
-                { 0, 0, 0, 0, 0 },
-                { 0, 1, 2, 1, 0 },
-                { 0, 1, 1, 1, 0 },
-                { 0, 1, 1, 1, 0 },
-                { 0, 0, 0, 0, 0 }
-            };
+            List<List<int>> room1 = bl.drawRoom(mapB);
+            List<List<int>> room2 = bl.drawRoom(mapB);
+            List<List<int>> map = bl.connectRoomWithCorridor(room1, room2, 10, 4);
 
             while (!KeyboardController.ShouldQuit)
             {
@@ -259,11 +260,15 @@ namespace RogueInterface
 
                 SDL_RenderClear(renderer);
 
-                for (int y = 0; y < 5; y++)
+                for (int y = 0; y < map.Count; y++)
                 {
-                    for (int x = 0; x < 5; x++)
+                    for (int x = 0; x < map[y].Count; x++)
                     {
-                        tiles[map[y,x]].Render(renderer, x * 30, y * 30);
+                        int index = map[y][x];
+                        if (index != -1)
+                        {
+                            tiles[map[y][x]].Render(renderer, x * 30, y * 30);
+                        }
                     }
                 }
 

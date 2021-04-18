@@ -56,8 +56,6 @@ namespace RogueInterface.Drawing
                 w = fontSize + 2,
                 h = fontSize + 2,
             };
-            
-
 
             return tile;
         }
