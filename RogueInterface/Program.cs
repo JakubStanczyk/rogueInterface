@@ -1,7 +1,7 @@
 ﻿using RogueInterface.Command;
 using RogueInterface.Events;
 using RogueInterface.Generation;
-
+using RogueInterface.Drawing;
 using System;
 
 using SDL2;
@@ -227,6 +227,10 @@ namespace RogueInterface
             renderQuad.y = 10;
             renderQuad.w = width;
             renderQuad.h = height;
+
+
+            Tile tile = Tile.createTile("#", renderer, font, textColour,20);
+
 
             while (!KeyboardController.ShouldQuit)
             {

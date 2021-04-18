@@ -14,12 +14,12 @@ namespace RogueInterface.Drawing
         private int height;
         
 
-       static  Tile createTile(String s, IntPtr renderer,IntPtr font,SDL_Color colour, int fontSize) 
+        public static  Tile createTile(String s, IntPtr renderer,IntPtr font,SDL_Color colour, int fontSize) 
         {
             Tile tile = new Tile();
 
             
-            IntPtr textSurface = TTF_RenderText_Solid(font, "I hate this module", colour);
+            IntPtr textSurface = TTF_RenderText_Solid(font, s, colour);
             if (textSurface == null)
             {
                 Console.WriteLine("Failed to render font surface");
