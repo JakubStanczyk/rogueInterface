@@ -2,7 +2,9 @@
 using RogueInterface.Events;
 using RogueInterface.Generation;
 using RogueInterface.Drawing;
+
 using System;
+using System.Collections.Generic;
 
 using SDL2;
 using static SDL2.SDL;
@@ -143,7 +145,14 @@ namespace RogueInterface
                 pitfallTrap.renameToPitfall();
             }
             */
-
+            int wallIndex = 0;
+            int floorIndex = 1;
+            int playerIndex = 2;
+            String[] arr =
+            {
+                "#", ".", "@"
+            };
+            List<String> tileChars = new List<String>(arr);
             ExampleCommand command = new ExampleCommand();
 
             KeyboardController.Init();
@@ -228,9 +237,21 @@ namespace RogueInterface
             renderQuad.w = width;
             renderQuad.h = height;
 
+            List<Tile> tiles = new List<Tile>();
 
-            Tile tile = Tile.createTile("#", renderer, font, textColour,20);
+            foreach (var s in tileChars)
+            {
+                tiles.Add(Tile.createTile(s, renderer, font, textColour, 20));
+            }
 
+            int[,] map =
+            {
+                { 0, 0, 0, 0, 0 },
+                { 0, 1, 2, 1, 0 },
+                { 0, 1, 1, 1, 0 },
+                { 0, 1, 1, 1, 0 },
+                { 0, 0, 0, 0, 0 }
+            };
 
             while (!KeyboardController.ShouldQuit)
             {
@@ -238,7 +259,13 @@ namespace RogueInterface
 
                 SDL_RenderClear(renderer);
 
-                SDL_RenderCopy(renderer, texture, ref sourceRect, ref renderQuad);
+                for (int y = 0; y < 5; y++)
+                {
+                    for (int x = 0; x < 5; x++)
+                    {
+                        tiles[map[y,x]].Render(renderer, x * 30, y * 30);
+                    }
+                }
 
                 SDL_RenderPresent(renderer);
             }

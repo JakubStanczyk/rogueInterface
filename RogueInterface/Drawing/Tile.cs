@@ -6,15 +6,27 @@ using static SDL2.SDL_ttf;
 
 namespace RogueInterface.Drawing
 {
-     public class Tile
+    public class Tile
     {
         private IntPtr texture;
         private SDL_Rect sourceRect;
         private int  width;
         private int height;
-        
 
-        public static  Tile createTile(String s, IntPtr renderer,IntPtr font,SDL_Color colour, int fontSize) 
+        public void Render(IntPtr renderer, int x, int y)
+        {
+            SDL_Rect rect = new SDL_Rect()
+            {
+                x = x,
+                y = y,
+                w = width,
+                h = height
+            };
+
+            SDL_RenderCopy(renderer, texture, ref sourceRect, ref rect);
+        }
+        
+        public static Tile createTile(String s, IntPtr renderer,IntPtr font,SDL_Color colour, int fontSize) 
         {
             Tile tile = new Tile();
 
@@ -49,9 +61,5 @@ namespace RogueInterface.Drawing
 
             return tile;
         }
-
-
-
-
     }
 }
