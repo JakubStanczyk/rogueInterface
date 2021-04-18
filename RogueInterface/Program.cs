@@ -5,13 +5,14 @@ using RogueInterface.Generation;
 using System;
 
 using SDL2;
-
+using static SDL2.SDL;
+using static SDL2.SDL_ttf;
 
 namespace RogueInterface
 {
     class ExampleCommand : IKeyboardCommand
     {
-        public void OnKey(KeyboardEventType type, SDL.SDL_Keycode keycode)
+        public void OnKey(KeyboardEventType type, SDL_Keycode keycode)
         {
             switch (type)
             {
@@ -49,6 +50,7 @@ namespace RogueInterface
     {
         static void Main(string[] args)
         {
+            /*
             ClientInterceptor ci = new ClientInterceptor();
             MapBuilder mapB = new MapBuilder(0, 0, 0, 0, 0);
             mapB.registerBuildRequestInterceptor(ci);
@@ -140,131 +142,108 @@ namespace RogueInterface
             {
                 pitfallTrap.renameToPitfall();
             }
-        
-
-            if (SDL.SDL_Init(SDL.SDL_INIT_EVERYTHING) != 0)
-            {
-                Console.WriteLine("Failed to start SDL");
-                return;
-            }
-
-            IntPtr window = SDL.SDL_CreateWindow("Rogue Interface", 100, 100, 800, 600, SDL.SDL_WindowFlags.SDL_WINDOW_SHOWN);
-            if (window == null)
-            {
-                Console.WriteLine("Failed to create window");
-                return;
-            }
-
-            bool quit = false;
+            */
 
             ExampleCommand command = new ExampleCommand();
 
             KeyboardController.Init();
             KeyboardController.AddCommand(command);
 
+            // ####################################################
+            // Setup SDL
+            if (SDL_Init(SDL.SDL_INIT_EVERYTHING) != 0)
+            {
+                Console.WriteLine("Failed to start SDL");
+                return;
+            }
+
+            IntPtr window = SDL_CreateWindow("Rogue Interface", 100, 100, 800, 600, SDL.SDL_WindowFlags.SDL_WINDOW_SHOWN);
+            if (window == null)
+            {
+                Console.WriteLine("Failed to create window");
+                return;
+            }
+
+            // #####################################################
+            // Create renderer
+            IntPtr renderer = SDL_CreateRenderer(window, -1, SDL_RendererFlags.SDL_RENDERER_ACCELERATED | SDL_RendererFlags.SDL_RENDERER_PRESENTVSYNC);
+            if (renderer == null)
+            {
+                Console.WriteLine("Failed to create renderer");
+                return;
+            }
+
+            SDL_SetRenderDrawColor(renderer, 0x0, 0x0, 0x0, 0xFF);
+
+            // ####################################################
+            // Set up TTF
+            if (TTF_Init() == -1)
+            {
+                Console.WriteLine("Failed to init TTF module");
+                return;
+            }
+
+            SDL_Color textColour = new SDL_Color();
+            textColour.r = 255;
+            textColour.g = 255;
+            textColour.b = 255;
+            
+            IntPtr font = TTF_OpenFont("sansserif.ttf", 20);
+            if (font == null)
+            {
+                Console.WriteLine("Failed to create font");
+                return;
+            }
+
+            IntPtr textSurface = TTF_RenderText_Solid(font, "I hate this module", textColour);
+            if (textSurface == null)
+            {
+                Console.WriteLine("Failed to render font surface");
+                return;
+            }
+
+            IntPtr texture = SDL_CreateTextureFromSurface(renderer, textSurface);
+            if (texture == null)
+            {
+                Console.WriteLine("Failed to render surface to texture");
+                return;
+            }
+
+            int width = 18 * 20;
+            int height = 22;
+
+            SDL_FreeSurface(textSurface);
+
+            SDL_Rect sourceRect = new SDL_Rect()
+            {
+                x = 0,
+                y = 0,
+                w = width,
+                h = height
+            };
+
+            SDL_Rect renderQuad = new SDL_Rect();
+            renderQuad.x = 10;
+            renderQuad.y = 10;
+            renderQuad.w = width;
+            renderQuad.h = height;
+
             while (!KeyboardController.ShouldQuit)
             {
                 KeyboardController.PollKeyboardEvents();
+
+                SDL_RenderClear(renderer);
+
+                SDL_RenderCopy(renderer, texture, ref sourceRect, ref renderQuad);
+
+                SDL_RenderPresent(renderer);
             }
 
-            SDL.SDL_DestroyWindow(window);
-            SDL.SDL_Quit();
-
-
-            /*for (int i = 0; i < 4;){
-                if(i==0){
-                    Console.WriteLine("How many rooms do you want to generate between 1 to 5? for levels 1 - 10?");
-                    int roomInput = Convert.ToInt32(Console.ReadLine());
-                    map.NumberOfRooms(roomInput);
-
-                    Console.WriteLine("What size of rooms do you want to be generated for levels 1 - 10? (small, medium, large) ");
-                    string sizeOfRooms = Console.ReadLine();
-                    map.SizeOfRooms(sizeOfRooms);
-                    if(sizeOfRooms == "small"){
-                        map.DoorAttachedToRooms(2);
-                    }
-                    else if(sizeOfRooms == "medium"){
-                        map.DoorAttachedToRooms(3);
-                    }
-                     else
-                    {
-                        map.DoorAttachedToRooms(4);
-                    }
-                    map.RangeOfLevel("1- 10");
-                    map.buildRooms();
-                    i++;
-                }
-
-                else if(i==1){
-                    Console.WriteLine("How many rooms do you want to generate between 1 to 5? for levels 11 - 20?");
-                    int roomInput = Convert.ToInt32(Console.ReadLine());
-                    map.NumberOfRooms(roomInput);
-
-                    Console.WriteLine("What size of rooms do you want to be generated for levels 11 - 20? (small, medium, large) ");
-                    string roomSize = Console.ReadLine();
-                    map.SizeOfRooms(roomSize);
-                    if(roomSize == "small"){
-                        map.DoorAttachedToRooms(2);
-                    }
-                    else if(roomSize == "medium"){
-                        map.DoorAttachedToRooms(3);
-                    }
-                    else
-                    {
-                         map.DoorAttachedToRooms(4);
-                    }
-                    map.RangeOfLevel("11 - 20");
-                    map.buildRooms();
-                    i++;
-                }
-
-                else if(i==2){
-                    Console.WriteLine("How many rooms do you want to generate between 1 to 5? for levels 21 - 30?");
-                    int roomInput = Convert.ToInt32(Console.ReadLine());
-                    map.NumberOfRooms(roomInput);
-
-                    Console.WriteLine("What size of rooms do you want to be generated for levels 21 - 30? (small, medium, large) ");
-                    string roomSize = Console.ReadLine();
-                    map.SizeOfRooms(roomSize);
-                    if(roomSize == "small"){
-                        map.DoorAttachedToRooms(2);
-                    }
-                    else if(roomSize == "medium"){
-                     map.DoorAttachedToRooms(3);
-                    }
-                    else
-                    {
-                        map.DoorAttachedToRooms(4);
-                    }
-                    map.RangeOfLevel("21 - 30");
-                    map.buildRooms();
-                    i++;
-                }
-
-                else if(i==3){
-                    Console.WriteLine("How many rooms do you want to generate between 1 to 5? for levels 31 - 40?");
-                    int roomInput = Convert.ToInt32(Console.ReadLine());
-                    map.NumberOfRooms(roomInput);
-
-                    Console.WriteLine("What size of rooms do you want to be generated for levels 31 - 40? (small, medium, large) ");
-                    string roomSize = Console.ReadLine();
-                    map.SizeOfRooms(roomSize);
-                    if(roomSize == "small"){
-                        map.DoorAttachedToRooms(2);
-                    }
-                    else if(roomSize == "medium"){
-                        map.DoorAttachedToRooms(3);
-                    }
-                    else
-                    {
-                        map.DoorAttachedToRooms(4);
-                    }
-                    map.RangeOfLevel("31 - 40");
-                    map.buildRooms();
-                    i++;
-                }
-            }
-            */
+            TTF_CloseFont(font);
+            SDL_DestroyRenderer(renderer);
+            SDL_DestroyWindow(window);
+            TTF_Quit();
+            SDL_Quit();
         }
     }
 }
