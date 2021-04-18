@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using RogueInterface.Prototype;
 
 namespace RogueInterface.Generation
@@ -10,9 +11,27 @@ namespace RogueInterface.Generation
              throw new NotImplementedException();
          } */
 
-        public string[,] drawRoom(int heightOfRoom, int widthOfRoom)
+        public List<List<int>> drawRoom(MapBuilder mapbuilder)
         {
-            return null;
+
+            List<List<int>> lists = new List<List<int>>();
+            
+
+            for (int i = 0; i < mapbuilder.getHeightOfRoom(); i++)
+            {
+                List<int> list = new List<int>();
+                
+                for (int j = 0; j < mapbuilder.getWidthOfRoom(); j++)
+                {
+                    list.Add(0);
+                }
+                lists.Add(list);
+            }
+           
+
+
+
+            return lists;
         }
         public BuildLevel createClone() {
 
@@ -25,6 +44,7 @@ namespace RogueInterface.Generation
             return null;
         
         }
+         
 
     }
 

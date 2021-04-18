@@ -1,11 +1,11 @@
 ﻿
-
+using System.Collections.Generic;
 namespace RogueInterface.Generation
 
 {
-    interface IGenerateMap 
+     interface IGenerateMap 
     {
-        public string[,] drawRoom(int heightOfRoom, int widthOfRoom);
+        public List<List<int>> drawRoom(MapBuilder mapbuilder);
         //public void connectRoomWithCorridor();
     }
 }
