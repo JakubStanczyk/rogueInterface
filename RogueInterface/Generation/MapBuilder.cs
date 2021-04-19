@@ -26,6 +26,28 @@ namespace RogueInterface.Generation
             //this.sizeOfMap = sizeOfMap;
             //Console.WriteLine("Level 1 will have " + numberOfRooms + " rooms, with " + doorAttachedToRooms + "doors attached to them. The rooms dimenstions are " + heightOfRoom + "units in height and " + widthOfRoom + "units in width");
         }
+        public override bool Equals(object obj)
+        {
+            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
+            MapBuilder othermb = (MapBuilder)obj;
+            if (this.numberOfRooms == othermb.numberOfRooms
+                && this.doorAttachedToRooms == othermb.doorAttachedToRooms
+                && this.gameLevel == othermb.gameLevel
+                && this.heightOfRoom == othermb.heightOfRoom
+                && this.widthOfRoom == othermb.widthOfRoom)
+            {
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+         }
+
 
         public MapBuilder NumberOfRooms(int numberOfRooms)
         {
