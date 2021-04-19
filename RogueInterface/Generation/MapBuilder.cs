@@ -1,8 +1,8 @@
 using System;
 using RogueInterface.Generation;
 using RogueInterface.Prototype;
-namespace RogueInterface.Generation
 
+namespace RogueInterface.Generation
 {
     public class MapBuilder : BuildRequestDispatcher, IPrototype<MapBuilder>, IBuildRequest
     {

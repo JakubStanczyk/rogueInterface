@@ -8,7 +8,6 @@ namespace RogueInterface.Generation
     public interface IBuildRequestInterceptor
     {
         public void onPreBuildRequest(IBuildRequest context);
-
         public void onPostBuildRequest(IBuildRequest context);
     }
 }

@@ -4,9 +4,9 @@ using System.Text;
 
 namespace RogueInterface.Events
 {
-    interface IModifyTrapEvent
+    public interface IModifyTrapEvent
     {
-        void renameToPitfall();
-        void renameToTripwire();
+        public void renameToPitfall();
+        public void renameToTripwire();
     }
 }

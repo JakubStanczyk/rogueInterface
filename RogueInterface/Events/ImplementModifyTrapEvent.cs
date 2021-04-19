@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RogueInterface.Events
 {
-    class ImplementModifyTrapEvent : ModifyTrapEvent
+    public class ImplementModifyTrapEvent : ModifyTrapEvent
     {
         public ImplementModifyTrapEvent(IModifyTrapEvent changeNameOfTrapEvent) : base(changeNameOfTrapEvent)
         {

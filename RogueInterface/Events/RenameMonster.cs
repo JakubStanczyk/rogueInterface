@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RogueInterface.Events
 {
-    class RenameMonster : IModifyMonsterEvent
+    public class RenameMonster : IModifyMonsterEvent
     {
         public void renameToGoblin()
         {

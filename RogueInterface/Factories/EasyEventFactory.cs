@@ -2,14 +2,14 @@
 
 namespace RogueInterface.Events
 {
-    class EasyEventFactory : IEventFactory
+    public class EasyEventFactory : IEventFactory
     {
-        IEnemySpawnEvent IEventFactory.CreateEnemySpawn()
+        public IEnemySpawnEvent CreateEnemySpawn()
         {
             return new EasyEnemySpawnEvent();
         }
 
-        ITrapSpawnEvent IEventFactory.CreateTrapSpawn()
+        public ITrapSpawnEvent CreateTrapSpawn()
         {
             return new EasyTrapSpawnEvent();
         }

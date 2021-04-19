@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RogueInterface.Events
 {
-    class RenameTraps : IModifyTrapEvent
+    public class RenameTraps : IModifyTrapEvent
     {
         public void renameToPitfall()
         {

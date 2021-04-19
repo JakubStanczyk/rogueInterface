@@ -4,9 +4,9 @@ using System.Text;
 
 namespace RogueInterface.Events
 {
-    class EventFactory
+    public class EventFactory
     {
-         public static IEventFactory GetEasySpawn()
+        public static IEventFactory GetEasySpawn()
         {
             return new EasyEventFactory();
         }

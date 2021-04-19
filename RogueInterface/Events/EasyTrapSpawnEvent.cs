@@ -2,7 +2,7 @@
 
 namespace RogueInterface.Events
 {
-    class EasyTrapSpawnEvent : ITrapSpawnEvent
+    public class EasyTrapSpawnEvent : ITrapSpawnEvent
     {
         void ITrapSpawnEvent.CreateTrap()
         {

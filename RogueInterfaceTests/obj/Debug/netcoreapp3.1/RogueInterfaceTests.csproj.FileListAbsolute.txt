@@ -201,3 +201,10 @@ C:\Users\OfficePC\Source\Repos\JakubStanczyk\rogueInterface\RogueInterfaceTests\
 C:\Users\OfficePC\Source\Repos\JakubStanczyk\rogueInterface\RogueInterfaceTests\obj\Debug\netcoreapp3.1\RogueInterfaceTests.dll
 C:\Users\OfficePC\Source\Repos\JakubStanczyk\rogueInterface\RogueInterfaceTests\obj\Debug\netcoreapp3.1\RogueInterfaceTests.pdb
 C:\Users\OfficePC\Source\Repos\JakubStanczyk\rogueInterface\RogueInterfaceTests\obj\Debug\netcoreapp3.1\RogueInterfaceTests.genruntimeconfig.cache
+C:\Users\Robert O'Shea\rogueInterface\RogueInterfaceTests\bin\Debug\netcoreapp3.1\RogueInterface.deps.json
+C:\Users\Robert O'Shea\rogueInterface\RogueInterfaceTests\bin\Debug\netcoreapp3.1\RogueInterface.runtimeconfig.json
+C:\Users\Robert O'Shea\rogueInterface\RogueInterfaceTests\bin\Debug\netcoreapp3.1\RogueInterface.runtimeconfig.dev.json
+C:\Users\Robert O'Shea\rogueInterface\RogueInterfaceTests\bin\Debug\netcoreapp3.1\RogueInterface.exe
+C:\Users\Robert O'Shea\rogueInterface\RogueInterfaceTests\bin\Debug\netcoreapp3.1\RogueInterface.dll
+C:\Users\Robert O'Shea\rogueInterface\RogueInterfaceTests\bin\Debug\netcoreapp3.1\SDL2-CS.dll
+C:\Users\Robert O'Shea\rogueInterface\RogueInterfaceTests\bin\Debug\netcoreapp3.1\RogueInterface.pdb

@@ -1,8 +1,8 @@
 ﻿namespace RogueInterface.Events
 {
-    interface IEventFactory
+    public interface IEventFactory
     {
-        IEnemySpawnEvent CreateEnemySpawn();
-        ITrapSpawnEvent CreateTrapSpawn();
+        public IEnemySpawnEvent CreateEnemySpawn();
+        public ITrapSpawnEvent CreateTrapSpawn();
     }
 }

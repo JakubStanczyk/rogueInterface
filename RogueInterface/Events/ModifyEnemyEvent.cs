@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RogueInterface.Events
 {
-    abstract class ModifyEnemyEvent
+    public abstract class ModifyEnemyEvent
     {
         protected IModifyMonsterEvent changeNameOfEnemyEvent;
         

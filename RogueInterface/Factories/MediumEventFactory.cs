@@ -4,14 +4,14 @@ using System.Text;
 
 namespace RogueInterface.Events
 {
-    class MediumEventFactory : IEventFactory
+    public class MediumEventFactory : IEventFactory
     {
-        IEnemySpawnEvent IEventFactory.CreateEnemySpawn()
+        public IEnemySpawnEvent CreateEnemySpawn()
         {
             return new MediumEnemySpawnEvent();
         }
 
-        ITrapSpawnEvent IEventFactory.CreateTrapSpawn()
+        public ITrapSpawnEvent CreateTrapSpawn()
         {
             return new MediumTrapSpawnEvent();
         }

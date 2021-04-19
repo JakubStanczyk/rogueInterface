@@ -2,12 +2,11 @@
 
 namespace RogueInterface.Events
 {
-    class MediumEnemySpawnEvent : IEnemySpawnEvent
+    public class MediumEnemySpawnEvent : IEnemySpawnEvent
     {
-        void IEnemySpawnEvent.CreateEnemy()
+        public void CreateEnemy()
         {
             Console.WriteLine("A medium difficulty enemy has been generated");
-
         }
     }
 }

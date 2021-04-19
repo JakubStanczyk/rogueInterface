@@ -2,14 +2,11 @@
 
 namespace RogueInterface.Events
 {
-    class MediumTrapSpawnEvent : ITrapSpawnEvent
+    public class MediumTrapSpawnEvent : ITrapSpawnEvent
     {
-
-        void ITrapSpawnEvent.CreateTrap()
+        public void CreateTrap()
         {
             Console.WriteLine("A medium trap has been generated");
         }
-
-
     }
 }

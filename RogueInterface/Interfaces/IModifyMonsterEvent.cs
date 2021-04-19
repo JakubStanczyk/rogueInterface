@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace RogueInterface.Events
-
 {
-    interface IModifyMonsterEvent
+    public interface IModifyMonsterEvent
     {
-        void renameToGoblin();
-        void renameToOrc();
-
+        public void renameToGoblin();
+        public void renameToOrc();
     }
 }
