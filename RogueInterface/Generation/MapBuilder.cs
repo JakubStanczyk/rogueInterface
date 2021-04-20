@@ -170,6 +170,7 @@ namespace RogueInterface.Generation
         }
         public void SetMemento(Memento memento)
         {
+            numberOfRooms = memento.numberOfRooms;
             doorAttachedToRooms = memento.doorAttachedToRooms;
             gameLevel = memento.gameLevel;
             heightOfRoom = memento.heightOfRoom;
