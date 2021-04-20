@@ -82,7 +82,7 @@ namespace RogueInterface
 
             Console.WriteLine(prototypeTestClone.getNumberOfRooms());
             BuildLevel buildItem = new BuildLevel();
-            BuildLevel buildItemTwo = buildItem.createCopy();
+            //BuildLevel buildItemTwo = buildItem.createCopy();
 
             Console.WriteLine("How many rooms do you want to generate between 1 to 4 for level 1?");
             int roomInput = Convert.ToInt32(Console.ReadLine());
@@ -113,7 +113,7 @@ namespace RogueInterface
             mapInformation.buildRooms();
             Console.WriteLine("Level 1 will have " + mapInformation.getNumberOfRooms() + " rooms, with " + mapInformation.getDoorsAttachedToRooms() + "doors attached to them. The rooms dimenstions are " + mapInformation.getHeightOfRoom() + "units in height and " + mapInformation.getWidthOfRoom() + "units in width");
             
-            buildItem.drawRoom(mapInformation.getHeightOfRoom(), mapInformation.getWidthOfRoom());
+            //buildItem.drawRoom(mapInformation.getHeightOfRoom(), mapInformation.getWidthOfRoom());
 
             Console.WriteLine("Should a easy enemy be a goblin?");
             string specifiedEnemyEvent1 = Console.ReadLine();
@@ -236,10 +236,10 @@ namespace RogueInterface
             renderQuad.w = width;
             renderQuad.h = height;
 
-            ClientInterceptor ci = new ClientInterceptor();
-            MapBuilder mapB = new MapBuilder(0, 0, 0, 0, 0);
-            mapB.registerBuildRequestInterceptor(ci);
-            mapB = mapB.buildRooms();
+            ClientInterceptor ci2 = new ClientInterceptor();
+            MapBuilder mapB2 = new MapBuilder(0, 0, 0, 0, 0);
+            mapB2.registerBuildRequestInterceptor(ci2);
+            mapB2 = mapB2.buildRooms();
             BuildLevel bl = new BuildLevel();
 
             List<Tile> tiles = new List<Tile>();

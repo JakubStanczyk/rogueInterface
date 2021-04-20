@@ -163,5 +163,18 @@ namespace RogueInterface.Generation
                 inter.onPreBuildRequest(this);
             }
         }
+
+        public Memento CreateMemento()
+        {
+            return new Memento(numberOfRooms, doorAttachedToRooms, gameLevel, heightOfRoom, widthOfRoom);
+        }
+        public void SetMemento(Memento memento)
+        {
+            numberOfRooms = memento.numberOfRooms;
+            doorAttachedToRooms = memento.doorAttachedToRooms;
+            gameLevel = memento.gameLevel;
+            heightOfRoom = memento.heightOfRoom;
+            widthOfRoom = memento.widthOfRoom;
+        }
     }
 }
