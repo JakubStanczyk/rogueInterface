@@ -52,7 +52,6 @@ namespace RogueInterface
     {
         static void Main(string[] args)
         {
-            /*
             ClientInterceptor ci = new ClientInterceptor();
             MapBuilder mapB = new MapBuilder(0, 0, 0, 0, 0);
             mapB.registerBuildRequestInterceptor(ci);
@@ -144,7 +143,7 @@ namespace RogueInterface
             {
                 pitfallTrap.renameToPitfall();
             }
-            */
+
             int wallIndex = 0;
             int floorIndex = 1;
             int playerIndex = 2;

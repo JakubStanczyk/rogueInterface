@@ -10,7 +10,7 @@ namespace RogueInterface.Drawing
     {
         private IntPtr texture;
         private SDL_Rect sourceRect;
-        private int  width;
+        private int width;
         private int height;
 
         public void Render(IntPtr renderer, int x, int y)
