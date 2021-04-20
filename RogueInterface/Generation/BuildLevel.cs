@@ -4,7 +4,7 @@ using RogueInterface.Prototype;
 
 namespace RogueInterface.Generation
 {
-    public class BuildLevel : IGenerateMap, IPrototype<BuildLevel>
+    public class BuildLevel : IGenerateMap
     {
         public List<List<int>> drawRoom(MapBuilder mapbuilder)
         {
@@ -40,18 +40,8 @@ namespace RogueInterface.Generation
 
             return lists;
         }
-        public BuildLevel createClone() {
-
-            return null;
-        }
-        
-        public BuildLevel createCopy() 
-        {
-
-            return null;
-        
-        }
-
+     
+      
         public List<List<int>> connectRoomWithCorridor(List<List<int>> room1, List<List<int>> room2, int room2Y, int spaceBetweenRooms)
         {
             int room1Width = room1[0].Count;

@@ -1,7 +1,11 @@
-﻿namespace RogueInterface.Events
+﻿using RogueInterface.Prototype;
+
+namespace RogueInterface.Events
 {
-    public interface IEnemySpawnEvent
+
+    public interface IEnemySpawnEvent : IPrototype<IEnemySpawnEvent>
     {
         public void CreateEnemy();
+        
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace RogueInterface.Events
+﻿using RogueInterface.Prototype;
+
+namespace RogueInterface.Events
 {
-    public interface ITrapSpawnEvent
+    public interface ITrapSpawnEvent:IPrototype<ITrapSpawnEvent>
     {
         public void CreateTrap();
     }
