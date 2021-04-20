@@ -166,7 +166,7 @@ namespace RogueInterface.Generation
 
         public Memento CreateMemento()
         {
-            return new Memento(doorAttachedToRooms, gameLevel, heightOfRoom, widthOfRoom);
+            return new Memento(numberOfRooms, doorAttachedToRooms, gameLevel, heightOfRoom, widthOfRoom);
         }
         public void SetMemento(Memento memento)
         {
